@@ -1,0 +1,23 @@
+{
+  "name": "gmoney-fallout-math-game",
+  "version": "1.0.0",
+  "description": "A math game where you battle monsters produced by a Nuclear Fallout to try and get the plant working again.",
+  "main": "src/main.ts",
+  "scripts": {
+    "init": "npx tsc --init",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "start": "vite preview"
+  },
+  "keywords": [],
+  "author": "Grant Weadon, FlappyGrant Studios",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
