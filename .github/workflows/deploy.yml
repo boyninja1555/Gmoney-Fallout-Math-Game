@@ -1,29 +1,32 @@
-name: Deploy to FTP
+name: Deploy to Plesk via FTP
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
   deploy:
-    name: FTP Deploy
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    
+    - name: Install Dependencies
+      run: |
+        npm install
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+    - name: Build Project
+      run: |
+        npm run build
 
-      - name: Deploy to FTP
-        uses: sebastianpopp/ftp-deploy@v1.0.1
-        with:
-          server: ftp://50.63.8.254
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          localDir: dist
-          remoteDir: Gmoney Fallout Math Game
+    - name: Deploy to Plesk via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: 50.63.8.254
+        username: github-actions
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/
+        server-dir: Gmoney Fallout Math Game/
