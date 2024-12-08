@@ -1,4 +1,4 @@
-import { Tile } from "./Tile"
+import { Tile } from "../core/Tile"
 
 export default class Player implements Tile {
     fillData: {

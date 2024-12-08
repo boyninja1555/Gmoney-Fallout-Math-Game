@@ -1,6 +1,6 @@
 import { Renderer } from "./Renderer"
 import { Tile } from "./Tile"
-import Player from "./Player"
+import Player from "../entity/Player"
 
 export default class Game {
     private renderer: Renderer | null = null
@@ -22,7 +22,7 @@ export default class Game {
         let map: Tile[] = []
 
         if (this.mode === "singleplayer") {
-            const mapUrl = "/src/built-in-server/map.txt"
+            const mapUrl = "/built-in-server/map.txt"
             const width = 50
             const height = 50
 
@@ -79,7 +79,7 @@ export default class Game {
         this.lastTime = now
         this.player.x += this.player.velocity.x
         this.player.y += this.player.velocity.y
-        this.renderer?.setTiles([ ...this.parseMapData(await this.fetchMapData("/src/built-in-server/map.txt"), 50, 50), this.player.get() ])
+        this.renderer?.setTiles([ ...this.parseMapData(await this.fetchMapData("/built-in-server/map.txt"), 50, 50), this.player.get() ])
         requestAnimationFrame(() => this.gameLoop())
     }
 
@@ -113,7 +113,7 @@ export default class Game {
                 tiles.push({
                     fillData: {
                         type: "image",
-                        value: `/src/tiles/${tileType}.png`,
+                        value: `/tiles/${tileType}.png`,
                     },
                     x,
                     y,
