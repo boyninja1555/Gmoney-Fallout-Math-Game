@@ -26,7 +26,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: 50.63.8.254
-        username: github-actions
-        password: ${{ secrets.FTP_PASSWORD }}
+        username: grantvideos
+        password: ${{ secrets.PLESK_FTP_PASSWORD }}
         local-dir: ./dist/
         server-dir: Gmoney Fallout Math Game/
